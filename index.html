@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Syed Muhammad Ali Mahdi – Portfolio</title>
+<meta name="description" content="AI & ML Engineer Portfolio of Syed Muhammad Ali Mahdi">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg: #0e1117;
+  --fg: #e2e8f0;
+  --card: #161b26;
+  --card-border: #1e2533;
+  --primary: #2dd4bf;
+  --primary-dark: #0d9488;
+  --primary-fg: #0e1117;
+  --secondary: #1e2533;
+  --secondary-fg: #cbd5e1;
+  --muted: #64748b;
+  --radius: 0.75rem;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:'Inter',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif}
+a{color:inherit;text-decoration:none}
+.container{max-width:960px;margin:0 auto;padding:0 1rem}
+.text-gradient{background:linear-gradient(135deg,#2dd4bf,#38bdf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent; background-clip: text;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(14,17,23,.8);backdrop-filter:blur(12px);border-bottom:1px solid rgba(30,37,51,.5)}
+nav .inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+nav .logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.1rem}
+nav .links{display:flex;gap:2rem}
+nav .links a{font-size:.875rem;color:var(--muted);transition:color .3s}
+nav .links a:hover{color:var(--primary)}
+.hamburger{display:none;background:none;border:none;color:var(--muted);font-size:1.5rem;cursor:pointer}
+@media(max-width:768px){
+  nav .links{display:none}
+  .hamburger{display:block}
+}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:5rem 1rem}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(45,212,191,.08),transparent 60%),radial-gradient(ellipse at 70% 30%,rgba(56,189,248,.06),transparent 50%)}
+.hero .content{position:relative;z-index:1;display:flex;align-items:center;gap:3rem;flex-wrap:wrap;justify-content:center}
+.profile-ring{width:220px;height:220px;border-radius:50%;padding:4px;background:linear-gradient(135deg,rgba(45,212,191,.4),rgba(56,189,248,.2));animation:glow 3s ease-in-out infinite;flex-shrink:0}
+.profile-ring img{width:100%;height:100%;border-radius:50%;object-fit:cover}
+@keyframes glow{0%,100%{box-shadow:0 0 20px rgba(45,212,191,.2)}50%{box-shadow:0 0 40px rgba(45,212,191,.4)}}
+.hero-text{flex:1;min-width:280px}
+.hero-text .tag{color:var(--primary);font-family:'Space Grotesk',sans-serif;font-size:.8rem;letter-spacing:.25em;text-transform:uppercase;margin-bottom:.75rem}
+.hero-text h1{font-size:clamp(2rem,5vw,3.5rem);font-weight:700;line-height:1.15;margin-bottom:.5rem}
+.hero-text .subtitle{font-size:1.2rem;color:var(--muted);margin-bottom:.5rem;font-family:'Space Grotesk',sans-serif}
+.hero-text .desc{color:var(--muted);max-width:480px;margin-bottom:1.5rem;font-size:.95rem}
+.contact-links{display:flex;flex-wrap:wrap;gap:.75rem;margin-bottom:1rem}
+.contact-links a,.contact-links span{font-size:.85rem;color:var(--muted);display:flex;align-items:center;gap:.4rem;transition:color .3s}
+.contact-links a:hover{color:var(--primary)}
+.social-icons{display:flex;gap:.75rem}
+.social-icons a{width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:var(--radius);background:var(--secondary);transition:all .3s;font-size:1.1rem}
+.social-icons a:hover{background:var(--primary);color:var(--primary-fg);transform:scale(1.1);box-shadow:0 0 20px rgba(45,212,191,.3)}
+
+/* SCROLL ANIMATION */
+.fade-up{opacity:0;transform:translateY(40px);transition:all .8s cubic-bezier(.16,1,.3,1)}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+.fade-left{opacity:0;transform:translateX(-50px);transition:all .8s cubic-bezier(.16,1,.3,1)}
+.fade-left.visible{opacity:1;transform:translateX(0)}
+.fade-right{opacity:0;transform:translateX(50px);transition:all .8s cubic-bezier(.16,1,.3,1)}
+.fade-right.visible{opacity:1;transform:translateX(0)}
+.fade-scale{opacity:0;transform:scale(.85);transition:all .7s cubic-bezier(.16,1,.3,1)}
+.fade-scale.visible{opacity:1;transform:scale(1)}
+
+/* SECTIONS */
+section{padding:6rem 1rem}
+section h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;margin-bottom:.5rem}
+section .subtitle{color:var(--muted);margin-bottom:3rem;font-size:.95rem}
+
+/* GLASS CARD */
+.glass-card{background:linear-gradient(145deg,rgba(22,27,38,.9),rgba(14,17,23,.9));border:1px solid rgba(30,37,51,.5);border-radius:var(--radius);transition:all .4s}
+.glass-card:hover{border-color:rgba(45,212,191,.3);transform:translateY(-4px);box-shadow:0 10px 40px -15px rgba(45,212,191,.15)}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1rem;margin-bottom:3rem}
+.skill-card{padding:1.5rem;display:flex;flex-direction:column;align-items:center;gap:.75rem;text-align:center}
+.skill-card .icon{font-size:2rem;color:var(--primary);transition:transform .3s}
+.skill-card:hover .icon{transform:scale(1.2)}
+.skill-card .name{font-size:.9rem;font-weight:500;color:var(--secondary-fg)}
+.skill-bar{width:100%;height:6px;background:var(--secondary);border-radius:99px;overflow:hidden}
+.skill-bar-fill{height:100%;background:var(--primary);border-radius:99px;width:0;transition:width 1s ease-out}
+.skill-card .level{font-size:.75rem;color:var(--muted)}
+.interests{display:flex;flex-wrap:wrap;gap:.75rem}
+.interests span{padding:.6rem 1.2rem;border-radius:99px;border:1px solid rgba(45,212,191,.2);font-size:.85rem;color:var(--primary);background:rgba(45,212,191,.05);transition:all .3s;cursor:default}
+.interests span:hover{background:rgba(45,212,191,.1);transform:scale(1.05)}
+
+/* PROJECTS */
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:1.5rem}
+@media(max-width:480px){.projects-grid{grid-template-columns:1fr}}
+.project-card{padding:1.5rem}
+.project-header{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1rem}
+.project-icon{padding:.75rem;border-radius:var(--radius);background:rgba(45,212,191,.1);color:var(--primary);font-size:1.2rem;transition:all .3s}
+.glass-card:hover .project-icon{background:var(--primary);color:var(--primary-fg);transform:rotate(12deg)}
+.project-header h3{font-size:1.1rem;font-weight:600}
+.project-header .meta{font-size:.8rem;color:var(--muted)}
+.project-card .desc{font-size:.85rem;color:var(--muted);line-height:1.7;margin-bottom:1rem}
+.tags{display:flex;flex-wrap:wrap;gap:.5rem}
+.tags span{font-size:.75rem;padding:.3rem .75rem;border-radius:99px;background:var(--secondary);color:var(--secondary-fg);transition:all .3s}
+.tags span:hover{background:rgba(45,212,191,.1);color:var(--primary)}
+
+
+/* CERTIFICATES */
+.certificates-section{background:linear-gradient(180deg,rgba(14,17,23,.98),rgba(16,21,29,.98))}
+.certificates-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2rem;margin-top:3rem}
+.certificate-card{padding:1.85rem;min-height:400px;display:flex;flex-direction:column}
+.certificate-image{width:100%;height:210px;margin-bottom:1.5rem;border-radius:12px;overflow:hidden;background:#111722;border:1px solid rgba(45,212,191,.12)}
+.certificate-image img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
+.certificate-card:hover .certificate-image img{transform:scale(1.04)}
+.certificate-header{display:flex;align-items:flex-start;gap:1.1rem;margin-bottom:1rem}
+.certificate-icon{width:68px;height:68px;border-radius:18px;display:flex;align-items:center;justify-content:center;background:rgba(45,212,191,.12);color:var(--primary);font-size:1.7rem;flex-shrink:0}
+.certificate-header h3{font-size:1.35rem;margin-bottom:.25rem}
+.certificate-issuer{color:var(--primary);font-size:1rem;font-weight:500}
+.certificate-meta{color:#94a3b8;font-size:.9rem;margin-top:.35rem}
+.certificate-desc{color:#94a3b8;font-size:1rem;line-height:1.65;margin:1rem 0 1.25rem}
+.certificate-tags{display:flex;flex-wrap:wrap;gap:.65rem;margin-top:auto}
+.certificate-tags span{padding:.42rem .9rem;border-radius:999px;background:#222936;color:#cbd5e1;font-size:.82rem}
+@media(max-width:900px){.certificates-grid{grid-template-columns:1fr}}
+@media(max-width:600px){.certificate-card{padding:1.3rem}.certificate-image{height:180px}}
+
+
+/* EDUCATION */
+.edu-card{padding:1.5rem;display:flex;gap:1.25rem;margin-bottom:1.5rem}
+.edu-icon{padding:.75rem;border-radius:var(--radius);background:rgba(45,212,191,.1);color:var(--primary);font-size:1.3rem;align-self:flex-start}
+.edu-card h3{font-size:1.1rem;font-weight:600;margin-bottom:.25rem}
+.edu-card .year{font-size:.85rem;color:var(--primary);margin-bottom:.25rem}
+.edu-card .school{font-size:.85rem;color:var(--muted);margin-bottom:.75rem}
+.gpa-bar{display:flex;align-items:center;gap:.75rem}
+.gpa-bar .label{font-size:.85rem;font-weight:500;white-space:nowrap}
+.gpa-track{flex:1;max-width:200px;height:8px;background:var(--secondary);border-radius:99px;overflow:hidden}
+.gpa-fill{height:100%;background:var(--primary);border-radius:99px;width:0;transition:width 1s ease-out}
+
+/* CONTACT */
+.contact{text-align:center}
+.contact p{color:var(--muted);max-width:400px;margin:0 auto 2.5rem}
+.contact-btns{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;margin-bottom:4rem}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:.75rem 1.5rem;border-radius:var(--radius);font-size:.9rem;font-weight:500;transition:all .3s;border:none;cursor:pointer}
+.btn-primary{background:var(--primary);color:var(--primary-fg)}
+.btn-primary:hover{transform:scale(1.05);box-shadow:0 0 30px rgba(45,212,191,.3)}
+.btn-secondary{background:var(--secondary);color:var(--secondary-fg)}
+.btn-secondary:hover{background:rgba(30,37,51,.7);transform:scale(1.05)}
+.footer{font-size:.8rem;color:var(--muted)}
+
+/* PARTICLES */
+.particles{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.particle{position:absolute;width:8px;height:8px;border-radius:50%;background:rgba(45,212,191,.25);animation:float-particle 8s ease-in-out infinite}
+@keyframes float-particle{0%,100%{transform:translateY(0) translateX(0);opacity:.3}25%{transform:translateY(-20px) translateX(10px);opacity:.8}50%{transform:translateY(-40px) translateX(-5px);opacity:.5}75%{transform:translateY(-20px) translateX(15px);opacity:.7}}
+
+/* CURSOR BLINK */
+.cursor{color:var(--primary);animation:blink 1s step-end infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+/* SVG Icons inline */
+.svg-icon{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.svg-icon-lg{width:32px;height:32px}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="inner container">
+    <a href="#home" class="logo text-gradient">Syed Muhammad Ali Mahdi</a>
+    <div class="links">
+      <a href="#home">Home</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
+      <a href="#certificates">Certificates</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <button class="hamburger" onclick="document.querySelector('.links').style.display=document.querySelector('.links').style.display==='flex'?'none':'flex'">☰</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="particles">
+    <div class="particle" style="left:15%;top:20%;animation-delay:0s;animation-duration:6s"></div>
+    <div class="particle" style="left:30%;top:45%;animation-delay:1.2s;animation-duration:7.5s"></div>
+    <div class="particle" style="left:45%;top:70%;animation-delay:2.4s;animation-duration:9s"></div>
+    <div class="particle" style="left:60%;top:25%;animation-delay:3.6s;animation-duration:10.5s"></div>
+    <div class="particle" style="left:75%;top:50%;animation-delay:4.8s;animation-duration:12s"></div>
+    <div class="particle" style="left:85%;top:35%;animation-delay:6s;animation-duration:13.5s"></div>
+  </div>
+  <div class="content container">
+    <div class="profile-ring">
+      <img src="./assets/certificates/Syed Muhammad White Background pic.jpeg" alt="Syed Muhammad Ali Mahdi">
+    </div>
+    <div class="hero-text">
+      <p class="tag">AI & ML Engineer</p>
+      <h1>Syed Muhammad Ali Mahdi<span class="text-gradient"></span></h1>
+      <p class="subtitle" id="typewriter"></p>
+      <p class="desc">Detail-oriented Machine Learning graduate with a strong academic foundation in computer vision and software development.</p>
+      <div class="contact-links">
+        <a href="mailto:syedmuhammadalimahdi8@gmail.com">✉ Email</a>
+        <a href="tel:03235400182">📞 0323-5400182</a>
+        <span>📍 Rawalpindi / Islamabd, Pakistan</span>
+      </div>
+      <div class="social-icons">
+        <a href="https://github.com/syedmuhammadalimahdi12" target="_blank" rel="noopener noreferrer" title="GitHub">GH</a>
+        <a href="https://www.linkedin.com/in/syed-muhammad-ali-mahdi-6364713a6" target="_blank" rel="noopener noreferrer" title="LinkedIn">in</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <h2 class="fade-up">Skills & <span class="text-gradient">Expertise</span></h2>
+    <p class="subtitle fade-up">Technologies and domains I specialize in</p>
+    <div class="skills-grid">
+      <div class="glass-card skill-card fade-scale" style="transition-delay:.0s"><span class="icon">⚙️</span><span class="name">Python</span><div class="skill-bar"><div class="skill-bar-fill" data-width="90%"></div></div><span class="level">90%</span></div>
+      <div class="glass-card skill-card fade-scale" style="transition-delay:.1s"><span class="icon">👁️</span><span class="name">Computer Vision</span><div class="skill-bar"><div class="skill-bar-fill" data-width="85%"></div></div><span class="level">85%</span></div>
+      <div class="glass-card skill-card fade-scale" style="transition-delay:.2s"><span class="icon">📱</span><span class="name">React Native</span><div class="skill-bar"><div class="skill-bar-fill" data-width="75%"></div></div><span class="level">75%</span></div>
+      <div class="glass-card skill-card fade-scale" style="transition-delay:.3s"><span class="icon">🖥️</span><span class="name">Flask</span><div class="skill-bar"><div class="skill-bar-fill" data-width="80%"></div></div><span class="level">80%</span></div>
+      <div class="glass-card skill-card fade-scale" style="transition-delay:.4s"><span class="icon">🧠</span><span class="name">Machine Learning</span><div class="skill-bar"><div class="skill-bar-fill" data-width="88%"></div></div><span class="level">88%</span></div>
+      <div class="glass-card skill-card fade-scale" style="transition-delay:.5s"><span class="icon">🔬</span><span class="name">Deep Learning</span><div class="skill-bar"><div class="skill-bar-fill" data-width="82%"></div></div><span class="level">82%</span></div>
+      <div class="glass-card skill-card fade-scale" style="transition-delay:.6s"><span class="icon">💬</span><span class="name">NLP</span><div class="skill-bar"><div class="skill-bar-fill" data-width="78%"></div></div><span class="level">78%</span></div>
+    </div>
+    <h3 style="font-size:1.15rem;color:var(--muted);margin-bottom:1rem" class="fade-up">Interests</h3>
+    <div class="interests fade-up">
+      <span>App Development</span><span>Drones</span><span>Robotics</span><span>Autonomous Cars</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" style="background:linear-gradient(180deg,rgba(14,17,23,.95),rgba(22,27,38,.9))">
+  <div class="container">
+    <h2 class="fade-up">Featured <span class="text-gradient">Projects</span></h2>
+    <p class="subtitle fade-up">A showcase of my academic and personal work</p>
+
+    <div class="projects-grid">
+
+      <!-- PROJECT 1 -->
+      <div class="glass-card project-card fade-left">
+        <div class="project-header">
+          <div class="project-icon">🛡️</div>
+          <div>
+            <h3>AI Helmet Detection System</h3>
+            <p class="meta">Deep Learning • Aug 2026 – Sep 2026</p>
+          </div>
+        </div>
+        <p class="desc">An intelligent object detection application for motorcycle road-safety analysis. Uses Faster R-CNN with ResNet-50 FPN to identify multiple road-safety objects in an image with confidence-based predictions and precise bounding boxes.</p>
+        <div class="tags">
+          <span>Deep Learning</span>
+          <span>Computer Vision</span>
+          <span>Faster R-CNN</span>
+          <span>ResNet-50 FPN</span>
+        </div>
+      </div>
+
+      <!-- PROJECT 2 -->
+      <div class="glass-card project-card fade-right" style="transition-delay:.15s">
+        <div class="project-header">
+          <div class="project-icon">😊</div>
+          <div>
+            <h3>EmotionVision AI</h3>
+            <p class="meta">Real-Time Facial Emotion Recognition • Aug 2026</p>
+          </div>
+        </div>
+        <p class="desc">A Streamlit app that recognizes emotions from uploaded images or a live webcam stream, classifying seven emotions (Angry, Disgust, Fear, Happy, Neutral, Sad, Surprise). Trained and compared HOG + Linear SVM, a Custom CNN, MobileNetV2, EfficientNetB0 and ResNet50 on the FER-2013 dataset, selecting the best performer for the final app.</p>
+        <div class="tags">
+          <span>Streamlit</span>
+          <span>Deep Learning</span>
+          <span>CNN</span>
+          <span>FER-2013</span>
+        </div>
+      </div>
+
+      <!-- PROJECT 3 -->
+      <div class="glass-card project-card fade-left" style="transition-delay:.3s">
+        <div class="project-header">
+          <div class="project-icon">✨</div>
+          <div><h3>AI Virtual Fashion Stylist</h3><p class="meta">Final Year Project • 2025 – 2026</p></div>
+        </div>
+        <p class="desc">An AI-powered virtual fashion stylist that analyzes user preferences and wardrobe images to recommend suitable outfits using computer vision and machine learning.</p>
+        <div class="tags"><span>Computer Vision</span><span>ML</span><span>Python</span></div>
+      </div>
+
+      <!-- PROJECT 4 -->
+      <div class="glass-card project-card fade-right" style="transition-delay:.45s">
+        <div class="project-header">
+          <div class="project-icon">🚗</div>
+          <div><h3>Object Detection – Autonomous Car</h3><p class="meta">Computer Vision Course</p></div>
+        </div>
+        <p class="desc">Developed an advanced object detection system for autonomous vehicles. Enabled real-time recognition of pedestrians, vehicles, and obstacles using deep learning and sensor fusion.</p>
+        <div class="tags"><span>Deep Learning</span><span>Object Detection</span><span>Sensor Fusion</span></div>
+      </div>
+
+      <!-- PROJECT 5 -->
+      <div class="glass-card project-card fade-left" style="transition-delay:.6s">
+        <div class="project-header">
+          <div class="project-icon">📰</div>
+          <div><h3>Fake News Detection</h3><p class="meta">NLP Course</p></div>
+        </div>
+        <p class="desc">Analyzing news articles and identifying misinformation with high accuracy. Implemented ML models for text analysis, fact-checking, and credibility assessment.</p>
+        <div class="tags"><span>NLP</span><span>Text Analysis</span><span>ML</span></div>
+      </div>
+
+      <!-- PROJECT 6 -->
+      <div class="glass-card project-card fade-right" style="transition-delay:.75s">
+        <div class="project-header">
+          <div class="project-icon">🤖</div>
+          <div><h3>Obstacle Avoiding Car</h3><p class="meta">DLD Project</p></div>
+        </div>
+        <p class="desc">Designed and developed an autonomous obstacle-avoiding car using ultrasonic sensors and intelligent decision logic for real-time path planning.</p>
+        <div class="tags"><span>Sensors</span><span>Hardware</span><span>Logic Design</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="container">
+    <h2 class="fade-up"><span class="text-gradient">Education</span></h2>
+    <div style="margin-top:2rem">
+      <div class="glass-card edu-card fade-left">
+        <div class="edu-icon">🎓</div>
+        <div>
+          <h3>BSc Computer Science (AI Specialization)</h3>
+          <p class="year">2022 – 2026</p>
+          <p class="school">Barani Institute of Information Technology, Arid University Rawalpindi</p>
+          <div class="gpa-bar"><span class="label">GPA: 3.09 / 4.0</span><div class="gpa-track"><div class="gpa-fill" data-width="77%"></div></div></div>
+        </div>
+      </div>
+      <div class="glass-card edu-card fade-right" style="transition-delay:.15s">
+        <div class="edu-icon">🎓</div>
+        <div>
+          <h3>Intermediate – FSc Pre-Engineering</h3>
+          <p class="year">2019 – 2021</p>
+          <p class="school">Superior Group of Colleges, Chawinda Campus Sialkot</p>
+          <div class="gpa-bar"><span class="label">Marks: 665 / 1100</span><div class="gpa-track"><div class="gpa-fill" data-width="60%"></div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CERTIFICATES -->
+<section id="certificates" class="certificates-section">
+  <div class="container">
+    <h2 class="fade-up">Licenses & <span class="text-gradient">Certifications</span></h2>
+    <p class="subtitle fade-up">Verified credentials in AI and Machine Learning</p>
+
+    <div class="certificates-grid">
+
+      <!-- CERTIFICATE 1 -->
+      <article class="glass-card certificate-card fade-left">
+        <div class="certificate-image">
+          <img src="./assets/certificates/ai-for-beginners.png"
+               alt="AI for Beginners Certificate"
+               onerror="this.style.display='none';this.parentElement.innerHTML='<div style=&quot;height:100%;display:flex;align-items:center;justify-content:center;color:#64748b;font-size:.9rem;&quot;>Add image: assets/certificates/ai-for-beginners.jpg</div>'">
+        </div>
+
+        <div class="certificate-header">
+          <div class="certificate-icon">🏅</div>
+          <div>
+            <h3>AI for Beginners</h3>
+            <p class="certificate-issuer">HP LIFE</p>
+            <p class="certificate-meta">Issued Feb 2026 · Expired May 2026</p>
+            <p class="certificate-meta">Credential ID 039bc768-efd4-4ba4-b75e-33fd619c5725</p>
+          </div>
+        </div>
+
+        <p class="certificate-desc">
+          Covered core AI concepts, clarified most AI-related fundamentals and solved applied AI problems.
+        </p>
+
+        <div class="certificate-tags">
+          <span>◉ Artificial Intelligence (AI)</span>
+          <span>◉ AI for Beginners</span>
+        </div>
+      </article>
+
+      <!-- CERTIFICATE 2 -->
+      <article class="glass-card certificate-card fade-right" style="transition-delay:.15s">
+        <div class="certificate-image">
+          <img src="./assets/certificates/machine-learning.jpg"
+               alt="Machine Learning Certificate"
+               onerror="this.style.display='none';this.parentElement.innerHTML='<div style=&quot;height:100%;display:flex;align-items:center;justify-content:center;color:#64748b;font-size:.9rem;&quot;>Add image: assets/certificates/machine-learning.jpg</div>'">
+        </div>
+
+        <div class="certificate-header">
+          <div class="certificate-icon">🏅</div>
+          <div>
+            <h3>Artificial Intelligence Basic Course</h3>
+            <p class="certificate-issuer">AI Institute of Pakistan</p>
+            <p class="certificate-meta">Issued Mar 2026 · Expired Jun 2026</p>
+            <p class="certificate-meta">Credential ID CERT A170626087</p>
+          </div>
+        </div>
+
+        <p class="certificate-desc">
+          Artificial Intelligence course — another milestone in my AI journey, covering practical machine learning workflows.
+        </p>
+
+        <div class="certificate-tags">
+          <span>◉ Machine Learning</span>
+          <span>◉ Artificial Intelligence (AI)</span>
+          <span>◉ Deep Learning</span>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="container fade-scale">
+    <h2>Get In <span class="text-gradient">Touch</span></h2>
+    <p>Interested in collaborating or have an opportunity? Feel free to reach out.</p>
+    <div class="contact-btns">
+      <a href="mailto:syedmuhammadalimahdi8@gmail.com" class="btn btn-primary">✉ Send Email</a>
+      <a href="https://github.com/syedmuhammadalimahdi12" target="_blank" class="btn btn-secondary">GitHub</a>
+      <a href="https://www.linkedin.com/in/syed-muhammad-ali-mahdi-6364713a6" target="_blank" class="btn btn-secondary">LinkedIn</a>
+    </div>
+    <p class="footer">© 2026 Syed Muhammad Ali Mahdi. All rights reserved.</p>
+  </div>
+</section>
+
+<script>
+// Typewriter
+const texts=["Computer Vision Expert","Machine Learning Engineer","React Native Developer","Deep Learning Enthusiast"];
+let ti=0,ci=0,del=false;
+const tw=document.getElementById('typewriter');
+function type(){
+  const t=texts[ti];
+  if(!del&&ci<t.length){ci++;tw.innerHTML=t.substring(0,ci)+'<span class="cursor">|</span>'}
+  else if(!del&&ci===t.length){setTimeout(()=>{del=true;type()},1500);return}
+  else if(del&&ci>0){ci--;tw.innerHTML=t.substring(0,ci)+'<span class="cursor">|</span>'}
+  else{del=false;ti=(ti+1)%texts.length}
+  setTimeout(type,del?40:80);
+}
+type();
+
+// Scroll animations
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');
+    e.target.querySelectorAll('[data-width]').forEach(b=>b.style.width=b.dataset.width);
+  }});
+},{threshold:0.1});
+document.querySelectorAll('.fade-up,.fade-left,.fade-right,.fade-scale').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
