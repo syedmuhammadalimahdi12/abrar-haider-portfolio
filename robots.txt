@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://syedmuhammadalimahdi12.github.io/syed-muhammad-ali-portfolio/sitemap.xml
